@@ -1,0 +1,39 @@
+openapi: 3.0.3
+info:
+  title: Greeting API
+  version: 1.0.0
+tags:
+  - name: greeting
+paths:
+  /greeting:
+    get:
+      tags:
+        - greeting
+      operationId: getGreeting
+      summary: Returns a greeting message
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          required: false
+          description: Name to include in the greeting
+      responses:
+        '200':
+          description: A greeting object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Greeting'
+components:
+  schemas:
+    Greeting:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        content:
+          type: string
+      required:
+        - id
