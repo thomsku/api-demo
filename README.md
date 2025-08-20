@@ -1,8 +1,23 @@
-# Typescript-typer demo
+# Tilnærminger til å holde typescript-typer i sync med eksterne webservices 
 
-### Alternativer
+## Skygge typer
+Tidkrevende, og er særlig sårbart for endringer. Avhengig av uformelle kanaler for å plukke dem opp. Også sårbart 
+fordi man må gjøre en manuell jobb (skrivefeil, feiltolkning av andre språks typer)
 
-#### tRPC
+## typescript-generator
+Genererte typer. Kan gjøres som en del av bygget til backenden, og dermed vil endringer automatisk bli plukket opp av frontend, 
+og potensielt brekke den (som er det vi vil). Kan fort glemmes av backend-teamet, som kan være både bra og dårlig. 
+Backend er fortsatt sannheten, frontend kommer i andre rekke.
+
+## Openapi-generator-cli
+
+Openapi-spec'et er sannheten. På denne måten stiller både frontend og backend likt. Trenger bare ett bibliotek for å generere kode for både frontend og backend.
+En utfordring er å bestemme hvem som skal generere frontend-koden, backend-teamet eller frontend-teamet? Ikke sikkert det er vilje/kompetanse i 
+backend-teamet til å forvalte frontend-genereringen.
+
+## Alternativer
+
+### tRPC
 (typescript Remote Procedure Call). Avhenger av at man har typescript både i backend og frontend. 
 Lager RPC-aktige kall som ligner på måten openapi-generator gjør det:  
 
@@ -50,7 +65,7 @@ const user = await trpc.user.byId.query('1');
 console.log('User 1:', user);
 ```
 
-#### Openapi-typescript
+### Openapi-typescript
 
 Genererer typer basert på openapi-spec:
 ```typescript
