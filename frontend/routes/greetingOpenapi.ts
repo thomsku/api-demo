@@ -1,6 +1,6 @@
 import { Router } from "express";
 import * as API from "../build/index";
-import { Configuration } from '../build/index';
+import { Configuration, ErrorResponse } from '../build/index';
 const router = Router();
 
 const greetingWs = () => {

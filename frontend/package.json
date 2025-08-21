@@ -8,16 +8,20 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node server.ts",
     "backend:watch": "node --watch-path ./routes --inspect=3001 -r ts-node/register server.ts",
-    "generate": "rm -rf build && rm -rf dist && openapi-generator-cli generate -i ../api/openapi/openapi.yaml -o build -g typescript-fetch --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true,allowUnicodeIdentifiers=true --type-mappings=string+date=string"
+    "generate": "rm -rf build && rm -rf dist && openapi-generator-cli generate -i ../api/openapi/openapi.yaml -o build -g typescript-fetch --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true,allowUnicodeIdentifiers=true --type-mappings=string+date=string",
+    "openapi-typescript:build": "npx openapi-typescript ../api/openapi/openapi.yaml -o api/schema.d.ts"
   },
   "private": true,
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.5.2",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "openapi-fetch": "^0.14.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
+    "openapi-typescript": "^7.9.1",
     "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
     "undici": "^7.11.0"
   }
 }

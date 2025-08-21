@@ -20,11 +20,17 @@ paths:
           description: Name to include in the greeting
       responses:
         '200':
-          description: A greeting object
+          description: Returns a greeting
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Greeting'
+        '400':
+          description: Bad Request (we do not greet Thomas)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     Greeting:
@@ -37,3 +43,16 @@ components:
           type: string
       required:
         - id
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          description: A description of the error
+          type: string
+        status:
+          description: A HTTP status code
+          type: integer
+          example: 400
+      required:
+        - message
+        - status

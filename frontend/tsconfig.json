@@ -13,7 +13,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "target": "es6",
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "noUncheckedIndexedAccess": true
   },
   "exclude": ["dist", "node_modules"]
 }
