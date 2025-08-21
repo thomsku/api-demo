@@ -31,7 +31,12 @@ export interface components {
             content?: string;
         };
         ErrorResponse: {
+            /** @description A description of the error */
             message: string;
+            /**
+             * @description A HTTP status code
+             * @example 400
+             */
             status: number;
         };
     };
@@ -55,7 +60,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description A greeting object */
+            /** @description Returns a greeting */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -64,7 +69,7 @@ export interface operations {
                     "application/json": components["schemas"]["Greeting"];
                 };
             };
-            /** @description Bad Request */
+            /** @description Bad Request (we do not greet Thomas) */
             400: {
                 headers: {
                     [name: string]: unknown;
